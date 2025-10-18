@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Lecturas</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, #f9fbff, #e6edfa);
+      margin: 0;
+      padding: 40px;
+      color: #333333;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #8f1a66;
+    }
+
+    .pista {
+      background: #885151;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      max-width: 750px;
+      font-size: 1.1em;
+      position: relative;
+    }
+
+    .pista::before {
+      content: "🔍";
+      font-size: 1.5em;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+
+    .input-area {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    input[type="password"] {
+      padding: 12px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin: 10px 0;
+      width: 280px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 1em;
+      background-color: #1a4d8f;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: background-color 0.3s ease, transform 0.1s ease;
+    }
+
+    button:hover {
+      background-color: #163a6d;
+      transform: translateY(-2px);
+    }
+
+    #pista2, #segundaClave, #pdf2 {
+      display: none;
+      animation: aparecer 0.6s ease-out;
+    }
+
+    @keyframes aparecer {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .download-link {
+      display: inline-block;
+      color: #fff;
+      background: #28a745;
+      padding: 12px 25px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: background-color 0.3s ease;
+    }
+
+    .download-link:hover {
+      background: #218838;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 600px;
+      font-size: 1.3em;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      animation: aparecer 0.5s ease-out;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      font-size: 2em;
+      cursor: pointer;
+      color: #711515;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Texto de bienvenida -->
+  <h1>Herramientas para mejorar la calidad de los pensamientos</h1>
+  <p style="text-align:center; font-size:1.2em;">
+    ¿Qué son los pensamientos? <br>  
+    Es la capacidad de crear ideas y representaciones de la realidad en la mente.  <br>
+     <br> 
+  </p>
+
+  <!-- 2. PDF inicial -->
+  <div class="input-area">
+    <h3>📄 Descarga este primer documento si quieres saber como mejorar tus pensamientos.:</h3>
+    <a href="ERRORES DE PENSAMIENTO.pdf"_blank" class="download-link">Descargar Errores de pensamiento</a>
+  </div>
+
+  <!-- 3.  -->
+  <h2>Los pensamientos negativos generan graves consecuencias a la salud fisica y mental</h2>
+  <div class="pista">
+,<br>
+    <br>
+    
+  </div>
+
+  <!-- 4. Primera clave -->
+  <div class="input-area">
+    <label for="clave1"><strong>Pensamientos diarios:</strong></label><br>
+    <input type="password" id="clave1" placeholder="Escribe una lista de los pensamientos">
+    <button onclick="verificarClave1()">Enviar</button>
+  </div>
+
+  <!-- 5. Pista número 2 -->
+  <div id="pista2">
+    <h2>Pista número 2</h2>
+    <div class="pista">
+    </div>
+  </div>
+
+
+  <!-- 6. Segunda clave -->
+  <div id="segundaClave" class="input-area">
+    <label for="clave2"><strong>Ingresa la segunda clave:</strong></label><br>
+    <input type="password" id="clave2" placeholder="Escribe la clave aquí">
+    <button onclick="verificarClave2()">Enviar</button>
+  </div>
+
+<br><br>
+       <br><br>
+        <br><br>
+     , <br>
+  
+    </div>
+  </div>
+
+  <script>
+    function verificarClave1() {
+      const clave = document.getElementById("clave1").value;
+      if (clave === "Perfil496969") {
+        document.getElementById("pista2").style.display = "block";
+        document.getElementById("pdf2").style.display = "block";
+        document.getElementById("segundaClave").style.display = "block";
+      } else {
+        alert("❌ Clave incorrecta, intenta de nuevo.");
+      }
+    }
+
+    function verificarClave2() {
+      const clave2 = document.getElementById("clave2").value.trim();
+      if (clave2.toLowerCase() === "giovanni pico della mirandola".toLowerCase()) {
+        document.getElementById("modal").style.display = "flex";
+      } else {
+        alert("❌ Segunda clave incorrecta, vuelve a intentarlo.");
+      }
+    }
+
+    function cerrarModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
+
